@@ -5,7 +5,7 @@ services:
     image: postgres
     container_name: ecommerce-postgres
     environment:
-      POSTGRES_DB: postgres
+      POSTGRES_DB: ecommerce
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       PGUSER: postgres
@@ -21,5 +21,4 @@ services:
 
 networks:
   default:
-    external: true
     name: "ecommerce-local"
