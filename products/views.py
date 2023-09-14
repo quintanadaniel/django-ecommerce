@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render, get_object_or_404
 
 # Create your views here.
-from .forms import ProductForm
+from .forms import ProductForm, ProductUpdateForm
 from .models import Product
 
 
@@ -31,7 +31,7 @@ def product_detail_view(request, handle=None):
     if request.user.is_authenticated:
         is_owner = obj.user == request.user
     context = {"object": obj}
-    form = ProductForm(request.POST or None, instance=obj)
+    form = ProductUpdateForm(request.POST or None, request.FILES or None, instance=obj)
     if form.is_valid():
         obj = form.save(commit=False)
         obj.save()
